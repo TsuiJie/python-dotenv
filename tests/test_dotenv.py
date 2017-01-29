@@ -1,6 +1,4 @@
-import os
 import unittest
-import types
 import dotenv
 
 try:

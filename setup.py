@@ -1,11 +1,11 @@
 from distutils.core import setup
 
 setup(
-    name='python-dotenv',
+    name='dotenv-python',
     version='0.0.1',
     author='Cui Jie',
     author_email='jndion2014@gmail.com',
-    url='https://github.com/TsuiJie/python-dotenv.git',
+    url='https://github.com/TsuiJie/dotenv-python.git',
     packages=['dotenv'],
     license='MIT',
     description='Read .env(-ish) configuration file for python web applications.',
