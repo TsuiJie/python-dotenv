@@ -2,6 +2,7 @@
 
 __version__ = '0.0.1'
 
+import re
 
 class DotEnv:
 
@@ -43,15 +44,7 @@ class DotEnv:
 
     ''' parse a line with .env standards '''
     def __read_line(self, line):
-        # find second quote mark
-        quote_delimit = max(line.find("'", line.find("'") + 1), line.find('"', line.rfind('"')) + 1)
-        # find comment at end of line
-        comment_delimit = line.find('#', quote_delimit)
-        # remove comment if exist at end of line
-        if comment_delimit >= 0:
-            line = line[:comment_delimit]
-        key, value = map(lambda x: x.strip().strip("'").strip('"'), line.split('=', 1))
-        # ignore bad key
-        if len(key) == 0:
-            return
+        result = re.search('(.+)=(.+)', line)
+        key = result.group(1)
+        value = result.group(2).strip('\"').strip('\'')
         self.data[key] = value
