@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
 
-__version__ = '0.0.1'
+__version__ = '0.0.2'
 
 import re
 
 class DotEnv:
-
     def __init__(self, path='.env'):
         self.path = path
         self.data = {}
@@ -13,12 +12,7 @@ class DotEnv:
 
     ''' get key with default value '''
     def get(self, key, default=None):
-        if key in self.data:
-            value = self.data[key]
-            if value == 'null' or len(value) == 0:
-                return default
-            return self.data[key]
-        return default
+        return self.data.get(key, default)
 
     ''' show if specific key exists '''
     def has(self, key):
