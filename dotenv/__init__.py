@@ -38,7 +38,7 @@ class DotEnv:
 
     ''' parse a line with .env standards '''
     def __read_line(self, line):
-        result = re.search('(.+)=(.+)', line)
+        result = re.search('(.+)=([A-Za-z0-9\'\"]+)', line)
         key = result.group(1)
         value = result.group(2).strip('\"').strip('\'')
         self.data[key] = value
